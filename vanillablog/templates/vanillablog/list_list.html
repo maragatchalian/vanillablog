@@ -1,0 +1,16 @@
+{% extends 'vanillablog/index.html' %}
+
+{% block content %}
+    {% for object in object_list %}
+        <div class="post">
+            <div class="date">
+                published: {{ object.published_date }}
+            </div>
+            
+            <h1>{{ object.title }}</a></h1>
+            <p>{{ object.text|linebreaks }}</p>
+            <p><i>  - {{ object.author}} </p></i>
+           
+        </div>
+    {% endfor %}
+{% endblock %}
