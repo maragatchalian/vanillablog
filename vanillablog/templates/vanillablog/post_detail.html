@@ -1,0 +1,15 @@
+{% extends 'vanillablog/index.html' %}
+{% block content %}
+    <div class="post">
+        {% if object.published_date %}
+            {{ object.published_date }}
+            
+        {% endif %}        
+
+        <h1>{{ object.title }}</h1>
+        <p>{{ object.text|linebreaks }}</p> 
+        <p><i> - {{ object.author}} </p></i>
+
+    </div>
+
+{% endblock %}

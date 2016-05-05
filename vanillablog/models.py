@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
 class List(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
@@ -14,9 +13,6 @@ class List(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-
-    # def approved_comments(self):
-    #     return self.comments.filter(approved_comment=True)
 
     def __str__(self):
         return self.title
