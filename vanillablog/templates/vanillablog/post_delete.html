@@ -1,0 +1,11 @@
+{% extends 'vanillablog/index.html' %}
+
+{% block content %}
+    <div class="post">
+        <form method="POST" class='post-delete'>{% csrf_token %}
+            <p>Are you sure you want to delete "{{ post.title }}"?</p>
+            <button type="submit" class="btn btn-danger"/>Confirm </button>
+            <a class="btn btn-default" href="{% url 'list' object.pk %}">Cancel</a>   
+        </form>
+    </div>
+{% endblock %}

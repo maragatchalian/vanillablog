@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.template import RequestContext
 from .models import List
 from django.http import HttpResponseRedirect
+from django.core.exceptions import ImproperlyConfigured
 
 class ListView(ListView):
     model = List
@@ -36,6 +37,7 @@ class ViewPost(DetailView):
 class DeletePost(DeleteView):
     model = List
     success_url = reverse_lazy('list')
+    template_name_suffix = '_confirm_delete'
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -46,6 +48,3 @@ class DeletePost(DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.get_success_url())
-
-
-
