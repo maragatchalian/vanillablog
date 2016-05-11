@@ -10,6 +10,11 @@
         <p>{{ object.text|linebreaks }}</p> 
         <p><i> - {{ object.author}} </p></i>
 
+        <form method="POST" action="{% url 'delete_post' object.pk %}">
+        	{% csrf_token %}
+            <input type="submit" class="btn btn-sm btn-danger" value="delete"></input>
+        </form>
+
     </div>
 
 {% endblock %}

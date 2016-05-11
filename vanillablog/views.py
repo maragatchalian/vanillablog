@@ -1,4 +1,4 @@
-from vanilla import ListView, CreateView, DetailView
+from vanilla import ListView, CreateView, DetailView, DeleteView
 from vanillablog.forms import PostForm
 from django.utils import timezone
 from django.core.urlresolvers import reverse_lazy
@@ -32,3 +32,20 @@ class ViewPost(DetailView):
         self.object = self.get_object()
         context = self.get_context_data()
         return self.render_to_response(context)
+
+class DeletePost(DeleteView):
+    model = List
+    success_url = reverse_lazy('list')
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data()
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return HttpResponseRedirect(self.get_success_url())
+
+
+
