@@ -5,14 +5,15 @@
             {{ object.published_date }}
             
         {% endif %}        
+        <br />
+    	<br />
+        {% csrf_token %}
+        <a class="btn btn-default" href="{% url 'edit_post' object.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'delete_post' object.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
 
         <h1>{{ object.title }}</h1>
         <p>{{ object.text|linebreaks }}</p> 
         <p><i> - {{ object.author}} </p></i>
-
-
-        {% csrf_token %}
-        <a class="btn btn-default" href="{% url 'delete_post' object.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
 
     </div>
 
